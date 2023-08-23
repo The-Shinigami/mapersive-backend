@@ -10,9 +10,9 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface InsuranceMapper {
     @Mapping(source = "id",target = "insuranceId")
-    InsuranceDto toDto(Insurance insurance);
+    InsuranceDto entityToDto(Insurance insurance);
 
     @Mapping(source = "insuranceId",target = "id")
-    Insurance toEntity(InsuranceDto insuranceDto);
+    Insurance DtoToEntity(InsuranceDto insuranceDto);
 
 }
