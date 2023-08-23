@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class InsuranceDto {
-    private String insuranceId;
+    private int insuranceId;
     private int policyId;
     private String dateOfPurchase;
     private int customerId;

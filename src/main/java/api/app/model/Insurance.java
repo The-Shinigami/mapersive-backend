@@ -11,7 +11,7 @@ public class Insurance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     private int policyId;
     private String dateOfPurchase;

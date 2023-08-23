@@ -13,9 +13,9 @@ import java.util.Set;
 public interface InsuranceService {
     Page<InsuranceDto> getAll(Pageable pageable);
 
-    Insurance save(Insurance insurance);
+    InsuranceDto save(Insurance insurance);
 
-    Insurance remove(Insurance insurance);
+    boolean remove(int insuranceId);
 
 
 }

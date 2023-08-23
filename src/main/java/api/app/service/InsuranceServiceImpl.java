@@ -23,12 +23,18 @@ public class InsuranceServiceImpl implements InsuranceService{
     }
 
     @Override
-    public Insurance save(Insurance insurance) {
-        return null;
+    public InsuranceDto save(Insurance insurance) {
+        return InsuranceMapper.INSTANCE.entityToDto(insuranceRepository.save(insurance));
     }
 
     @Override
-    public Insurance remove(Insurance insurance) {
-        return null;
+    public boolean remove(int insuranceId) {
+        try{
+            insuranceRepository.deleteById(insuranceId);
+        }
+        catch (Exception e){
+            return false;
+        }
+        return true;
     }
 }
