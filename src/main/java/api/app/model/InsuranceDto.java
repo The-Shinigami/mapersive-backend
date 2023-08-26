@@ -1,24 +1,28 @@
 package api.app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class InsuranceDto {
-    private int insuranceId;
-    private int policyId;
-    private String dateOfPurchase;
-    private int customerId;
-    private String fuel;
-    private String vehicleSegment;
-    private int premium;
-    private int bodilyInjuryLiability;
-    private int personalInjuryProtection;
-    private int propertyDamageLiability;
-    private int collision;
-    private int comprehensive;
-    private String customerGender;
-    private String customerIncomeGroup;
-    private String customerRegion;
-    private int customerMaritalStatus;
+    public int insuranceId;
+    public int policyId;
+    public String dateOfPurchase;
+    public int customerId;
+    public String fuel;
+    public String vehicleSegment;
+    public int premium;
+    public int bodilyInjuryLiability;
+    public int personalInjuryProtection;
+    public int propertyDamageLiability;
+    public int collision;
+    public int comprehensive;
+    public String customerGender;
+    public String customerIncomeGroup;
+    public String customerRegion;
+    public int customerMaritalStatus;
 }
