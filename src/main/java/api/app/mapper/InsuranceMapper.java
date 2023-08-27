@@ -1,6 +1,8 @@
 package api.app.mapper;
 
 
+import api.app.controller.request.InsuranceAddRequest;
+import api.app.controller.request.InsuranceUpdateRequest;
 import api.app.model.Insurance;
 import api.app.model.InsuranceDto;
 import api.app.model.InsuranceJson;
@@ -16,7 +18,16 @@ public interface InsuranceMapper {
     InsuranceDto entityToDto(Insurance insurance);
 
     @Mapping(source = "insuranceId",target = "id")
-    Insurance DtoToEntity(InsuranceDto insuranceDto);
+    Insurance dtoToEntity(InsuranceDto insuranceDto);
+
+    @Mapping(target = "policyId")
+    InsuranceDto requestToDto(InsuranceAddRequest insuranceAddRequest);
+
+    @Mapping(target = "policyId")
+    Insurance requestAddToEntity(InsuranceAddRequest insuranceAddRequest);
+
+    @Mapping(source = "insuranceId",target = "id")
+    Insurance requestUpdateToEntity(InsuranceUpdateRequest insuranceUpdateRequest);
 
     @Mapping(source = "Policy_id", target = "policyId")
     @Mapping(source = "Date_of_Purchase", target = "dateOfPurchase")

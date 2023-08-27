@@ -7,7 +7,7 @@ import api.app.mapper.InsuranceMapper;
 import api.app.repository.InsuranceRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.mapstruct.factory.Mappers;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -55,7 +55,9 @@ public class InsuranceServiceImpl implements InsuranceService{
 
     @Override
     public void loadOnstart(String path) throws IOException {
-        if(insuranceRepository.findAll().size() == 0) {
+        int size = insuranceRepository.findAll().size();
+
+        if( size == 0) {
             ClassPathResource resource = new ClassPathResource(path);
             InputStream inputStream = resource.getInputStream();
             List<InsuranceJson> insurancesJson = objectMapper.readValue(inputStream, new TypeReference<>() {
@@ -64,6 +66,7 @@ public class InsuranceServiceImpl implements InsuranceService{
             insuranceRepository.saveAll(insurances);
 
             System.out.println("Data Is Loaded");
+
         }else{
             System.out.println("Data Is Already Loaded");
         }

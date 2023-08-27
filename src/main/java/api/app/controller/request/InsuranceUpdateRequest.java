@@ -1,19 +1,9 @@
-package api.app.model;
+package api.app.controller.request;
 
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class InsuranceDto {
+public class InsuranceUpdateRequest {
     public int insuranceId;
     public int policyId;
     public String dateOfPurchase;

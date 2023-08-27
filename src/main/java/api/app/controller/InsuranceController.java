@@ -1,35 +1,33 @@
 package api.app.controller;
 
-import api.app.controller.request.InsuranceDeleteRequest;
+import api.app.controller.request.InsuranceAddRequest;
+import api.app.controller.request.InsuranceUpdateRequest;
+import api.app.controller.util.EntityType;
+import api.app.controller.util.ExceptionType;
+import api.app.controller.util.MainException;
 import api.app.controller.util.Response;
+import api.app.model.Insurance;
 import api.app.model.InsuranceDto;
 import api.app.mapper.InsuranceMapper;
 import api.app.service.InsuranceService;
-import api.app.service.MapValidationErrorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-
 
 @RestController
 @RequestMapping("/api/insurance")
 @CrossOrigin("*")
+@Validated
 public class InsuranceController {
 
     InsuranceService insuranceService;
-    MapValidationErrorService mapValidationErrorService;
 
-    InsuranceController(InsuranceService insuranceService,
-                        MapValidationErrorService mapValidationErrorService
+    InsuranceController(InsuranceService insuranceService
     ){
         this.insuranceService = insuranceService;
-        this.mapValidationErrorService = mapValidationErrorService;
     }
 
     @GetMapping
@@ -39,22 +37,27 @@ public class InsuranceController {
     }
 
     @PostMapping
-    public ResponseEntity<InsuranceDto> addInsurance(@RequestBody InsuranceDto insuranceDto) {
-        InsuranceDto insurance = insuranceService.save(InsuranceMapper.INSTANCE.DtoToEntity(insuranceDto));
+    public ResponseEntity addInsurance(@RequestBody  InsuranceAddRequest insuranceAddRequest) {
+        Insurance insuranceEntity = InsuranceMapper.INSTANCE.requestAddToEntity(insuranceAddRequest);
 
-        return ResponseEntity.ok(insurance);
+        insuranceService.save(insuranceEntity);
+
+    return  new ResponseEntity<Response>(Response.ok().setPayload(MainException.getMessageTemplate(EntityType.Insurance, ExceptionType.ADDED)), HttpStatus.OK);
+
     }
     @PutMapping
-    public ResponseEntity<InsuranceDto> updateInsurance(@RequestBody InsuranceDto insuranceDto) {
+    public ResponseEntity updateInsurance(@RequestBody InsuranceUpdateRequest insuranceUpdateRequest) {
 
-        InsuranceDto insurance = insuranceService.save(InsuranceMapper.INSTANCE.DtoToEntity(insuranceDto));
+        InsuranceDto insurance = insuranceService.save(InsuranceMapper.INSTANCE.requestUpdateToEntity(insuranceUpdateRequest));
 
-        return ResponseEntity.ok(insurance);
+        return  new ResponseEntity<Response>(Response.ok().setPayload(MainException.getMessageTemplate(EntityType.Insurance, ExceptionType.UPDATED)), HttpStatus.OK);
     }
 
     @DeleteMapping("/{insuranceId}")
-    public ResponseEntity<Boolean> deleteInsurance(@PathVariable Integer insuranceId) {
-        boolean isDeleted =  insuranceService.remove(insuranceId);
-        return ResponseEntity.ok(isDeleted);
+    public ResponseEntity deleteInsurance(@PathVariable Integer insuranceId) {
+        insuranceService.remove(insuranceId);
+        return  new ResponseEntity<Response>(Response.ok().setPayload(MainException.getMessageTemplate(EntityType.Insurance, ExceptionType.DELETED)), HttpStatus.OK);
     }
+
+
 }
