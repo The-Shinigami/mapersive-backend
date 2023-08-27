@@ -119,7 +119,7 @@ To successfully run the mapersive-backend project, ensure you have the following
 
 To get the project, you can clone the repository from GitHub using the following command:
 
-- git clone https://github.com/your-username/mapersive-backend.git
+- git clone https://github.com/The-Shinigami/mapersive-backend.git
   
 ### Running the API Locally
 
