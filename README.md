@@ -4,8 +4,8 @@
 
 In this documentation, we'll explore the journey of developing the mapersive-backend project, from data analysis to API deployment. The project involves analyzing JSON data, designing a database schema, developing a Spring Boot API, and deploying it using Docker. Follow along as we delve into each step, discussing decisions made, challenges faced, and the solutions crafted. Let's embark on this journey of exploration, development, and deployment together.
 
-### Step 1: Data Analysis
-#### Analyzing Data with Jupyter Notebook
+## Step 1: Data Analysis
+### Analyzing Data with Jupyter Notebook
 I utilized a Jupyter Notebook to analyze the provided JSON data. The primary objective was to understand the dataset's structure and content. I extracted valuable insights from the dataset, including information about columns with unique values and their characteristics.
 
 #### Columns with Unique Values
@@ -40,7 +40,7 @@ I utilized a Jupyter Notebook to analyze the provided JSON data. The primary obj
 - Customer_Marital_status
   - Unique Values: [1 0]
 
-### Step 2: Database Design Decision
+## Step 2: Database Design Decision
 After analyzing the data, I faced two options for representing the database schema:
 
 - **Option 1: Normalization into Custom and Insurance Tables**
@@ -99,7 +99,7 @@ To deploy the Spring Boot API, I generated a JAR (Java Archive) file. The JAR fi
 #### Creating Dockerfile
 To containerize the API and facilitate deployment across different environments, I created a Dockerfile. The Dockerfile specifies the instructions to build a Docker image that encapsulates the API and its dependencies.
 
-### ------------------------------------------------------------------------------------------------------------
+##
 ## Getting Started
 
 ### Prerequisites
@@ -121,6 +121,7 @@ To get the project, you can clone the repository from GitHub using the following
 - git clone https://github.com/your-username/mapersive-backend.git
   
 ### Running the API Locally
+
 - Open IntelliJ IDEA.
 - From the welcome screen, choose "Import Project."
 - In IntelliJ IDEA, navigate to the "src/main/java" directory.
