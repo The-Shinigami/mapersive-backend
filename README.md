@@ -59,7 +59,7 @@ After considering various database options, I have chosen PostgreSQL as the rela
 ## Step 4: API Development
 With the database choice in mind, I proceeded with the development of the Spring Boot API. The development process followed these sequential steps:
 
-#### Entity Classes
+#### Entity Classe
 I started by creating entity classe that correspond to the data model. This classe define the structure of the data that will be stored in the PostgreSQL database. The entity class is annotated with JPA annotations to facilitate database interaction.
 
 #### DTO (Data Transfer Object) Classes
@@ -69,10 +69,10 @@ To separate the internal structure of the application from the external API repr
 I implemented mapper classes to convert between entity object and DTOs. These mappers ensure a smooth translation between internal data structures and data that is sent and received through the API.
 
 #### Repository
-The repository layer includes interface that extend Spring Data JPA repositories. These interfaces define methods to interact with the database, such as querying, saving, updating, and deleting records.
+The repository layer includes interface that extend Spring Data JPA repositories. This interface define methods to interact with the database, such as querying, saving, updating, and deleting records.
 
 #### Services
-The service layer contains business logic that handles interactions between the controllers and repositories. It ensures proper validation, transformation, and delegation of tasks.
+The service layer contains business logic that handles interactions between the controllers and repositories.
 
 #### Controller
 The controller layer exposes the API endpoints and handles incoming HTTP requests. Each endpoint is mapped to a specific URL and HTTP method. The controller methods use the services to process requests and return appropriate responses.
