@@ -92,7 +92,7 @@ The API development resulted in the creation of four endpoints:
 4. **DELETE /api/insurance/insuranceId**
    - Deletes an insurance record based on the insurance ID.
 
-### Step 5: API Deployment
+## Step 5: API Deployment
 #### Generating JAR File
 To deploy the Spring Boot API, I generated a JAR (Java Archive) file. The JAR file contains the compiled Java classes, resources, and dependencies required to run the API.
 
@@ -100,6 +100,7 @@ To deploy the Spring Boot API, I generated a JAR (Java Archive) file. The JAR fi
 To containerize the API and facilitate deployment across different environments, I created a Dockerfile. The Dockerfile specifies the instructions to build a Docker image that encapsulates the API and its dependencies.
 
 ##
+
 ## Getting Started
 
 ### Prerequisites
