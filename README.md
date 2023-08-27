@@ -80,6 +80,9 @@ The controller layer exposes the API endpoints and handles incoming HTTP request
 #### Utilities (Utils)
 I created utility classes to handle the representation of API responses. These utility classes encapsulate the structure of response objects and facilitate consistent and standardized responses across the API.
 
+#### Load json file
+I created method to handle importing the provided json file upon startup.
+
 #### API Endpoints
 The API development resulted in the creation of four endpoints:
 
