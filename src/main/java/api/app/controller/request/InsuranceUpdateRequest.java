@@ -1,13 +1,18 @@
 package api.app.controller.request;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+
 
 @Data
 public class InsuranceUpdateRequest {
     public int insuranceId;
     public int policyId;
+    @NotBlank(message = "Date is Blank")
     public String dateOfPurchase;
     public int customerId;
+    @NotBlank(message = "Fuel is Blank")
     public String fuel;
     public String vehicleSegment;
     public int premium;

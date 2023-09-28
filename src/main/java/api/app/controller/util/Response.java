@@ -11,8 +11,6 @@ import lombok.experimental.Accessors;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,6 +18,8 @@ public class Response<T> {
 
     public Status status;
     public T payload;
+    public Object errors;
+
 
     public Status getStatus() {
         return status;
@@ -43,6 +43,21 @@ public class Response<T> {
         Response<T> response = new Response<>();
         response.setStatus(Status.OK);
         return response;
+    }
+
+    public static <T> Response<T> validationException() {
+        Response<T> response = new Response<>();
+        response.setStatus(Status.VALIDATION_EXCEPTION);
+        return response;
+    }
+
+    public Object getErrors() {
+        return errors;
+    }
+
+    public Response<T> setErrors(Object errors) {
+        this.errors = errors;
+        return this;
     }
 
     public enum Status {
